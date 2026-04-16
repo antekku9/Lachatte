@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "http://frameworkstudio.pl/:path*",
+      "destination": "https://www.frameworkstudio.pl/:path*",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
