@@ -39,20 +39,20 @@ export function NewsletterForm({ isDark, colors }: NewsletterFormProps) {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Accept': 'application/json'
+            'Accept': 'application/json',
           },
           body: JSON.stringify({
-            email: email,
+            email,
             brand: 'La Chatte',
             subject: 'Nowy zapis newsletter - La Chatte',
             _template: 'table',
-            _captcha: false
-          })
+            _captcha: false,
+          }),
         }
       );
 
       if (!response.ok) {
-        throw new Error('Błąd wysyłania formularza');
+        throw new Error('FormSubmit error');
       }
 
       setStatus('success');
@@ -72,6 +72,7 @@ export function NewsletterForm({ isDark, colors }: NewsletterFormProps) {
     }
   };
 
+
   if (status === 'success') {
     return (
       <motion.div
@@ -90,10 +91,10 @@ export function NewsletterForm({ isDark, colors }: NewsletterFormProps) {
         <p className="text-sm opacity-90">
           Powiadomimy Cię o otwarciu sklepu
         </p>
-
       </motion.div>
     );
   }
+
 
   return (
     <form
@@ -153,16 +154,12 @@ export function NewsletterForm({ isDark, colors }: NewsletterFormProps) {
       >
 
         {status === 'loading' ? (
-
           <>
             <Loader2 className="w-5 h-5 animate-spin" />
             Zapisywanie...
           </>
-
         ) : (
-
           'Zapisz się'
-
         )}
 
       </motion.button>
